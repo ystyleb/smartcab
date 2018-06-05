@@ -47,6 +47,7 @@ class LearningAgent(Agent):
 
         return None
 
+    @property
     def build_state(self):
         """ The build_state function is called when the agent requests data from the
             environment. The next waypoint, the intersection inputs, and the deadline
@@ -141,7 +142,7 @@ class LearningAgent(Agent):
             environment for a given trial. This function will build the agent
             state, choose an action, receive a reward, and learn if enabled. """
 
-        state = self.build_state()  # Get current state
+        state = self.build_state  # Get current state
         self.createQ(state)  # Create 'state' in Q-table
         action = self.choose_action(state)  # Choose an action
         reward = self.env.act(self, action)  # Receive a reward
